@@ -1,7 +1,13 @@
 //rxslice
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getStoreJson, setStoreJson } from "../../utils/tool";
+import { ACCESS_TOKEN,
+  getStore,
+  setCookie,
+  setStore,
+  getStoreJson,
+  setStoreJson,
+  USER_LOGIN, } from "../../utils/tool";
 const initialState = {
   arrProduct: [],
   productDetail: {},
@@ -41,13 +47,26 @@ const productReducer = createSlice({
       }
     },
     decreaseCart: (state, action) => {
-      console.log('carts giảm dần chạy')
+      console.log("carts giảm dần chạy");
       const itemIndex = state.carts.productOrder.findIndex(
         (cartItem) => cartItem.id === action.payload.id
       );
-      if(state.carts.productOrder[itemIndex].quantityOrder > 1) {
+      if (state.carts.productOrder[itemIndex].quantityOrder > 1) {
         state.carts.productOrder[itemIndex].quantityOrder -= 1;
-        setStoreJson("orderProduct", [...state.carts.productOrder])
+        setStoreJson("orderProduct", [...state.carts.productOrder]);
+      }
+    },
+    deleteProductAction: (state, action) => {
+      const id = action.payload;
+      const itemIndex = state.carts.productOrder.findIndex(
+        (state) => state.id === id
+      );
+      state.carts.productOrder.splice(itemIndex, 1);
+      setStoreJson("orderProduct", [...state.carts.productOrder]);
+      let productCart = getStore("orderProduct");
+      if (productCart?.length === 0) {
+        alert("không có sản phẩm");
+        localStorage.removeItem("orderProduct")
       }
     },
   },
@@ -58,7 +77,8 @@ export const {
   getProductDetailAction,
   getProduct,
   getProductToCartAction,
-  decreaseCart
+  decreaseCart,
+  deleteProductAction
 } = productReducer.actions;
 
 export default productReducer.reducer;

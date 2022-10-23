@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decreaseCart, getProductToCartAction } from "../../redux/reducer/productReducer";
+import { decreaseCart, deleteProductAction, getProductToCartAction } from "../../redux/reducer/productReducer";
 
 export default function Carts() {
   const dispatch = useDispatch();
   const { productOrder } = useSelector((state) => state.productReducer.carts);
+  
+  useEffect(() => {
+    renderCarts();
+  },[productOrder]);
   // console.log(productOrder);
   const renderCarts = () => {
     return productOrder?.map((prod, index) => {
@@ -45,16 +49,27 @@ export default function Carts() {
               -
             </button>
           </td>
+          <td className="text">{prod.price * `${prod.quantityOrder}`}$</td>
+          <td className="action">
+            <button className="btn btn-primary me-2 text">Edit</button>
+            <button
+              className="btn btn-danger text"
+              onClick={() => {
+                deleteProduct(prod.id);
+              }}
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       );
     });
   };
 
-
-  
-  useEffect(() => {
-    renderCarts();
-  },[productOrder]);
+  const deleteProduct = (id) => {
+    const action = deleteProductAction(id)
+    dispatch(action)
+  }
 
   return (
     <div className="container my-4">

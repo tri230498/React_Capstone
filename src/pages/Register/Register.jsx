@@ -38,7 +38,7 @@ export default function Register() {
   });
   return (
     <div className="container">
-      <h2>Register</h2>
+      <h2 className="text-sm-start text-center">Register</h2>
       <hr />
       <form action="" className="row" onClick={frm.onSubmit}>
         <div className="col-sm-6">

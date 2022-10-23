@@ -37,7 +37,7 @@ export default function Footer() {
           className="col-sm-4  ps-sm-5 text-start"
           style={{ borderRight: "solid 0.25px rgba(1, .1, .1,.2)" }}
         >
-          <h5 className="text-uppercase fw-semibold">get help</h5>
+          <h5 className="text-uppercase fw-semibold">support</h5>
           <ul className="fw-semibold">
             <li>
               <NavLink className="navlink-hover" to="/index">
@@ -62,7 +62,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="col-sm-4 ps-sm-5 text-start">
-          <h5 className="text-uppercase fw-semibold">get help</h5>
+          <h5 className="text-uppercase fw-semibold">register</h5>
           <ul className="fw-semibold">
             <li>
               <NavLink className="navlink-hover" to="/register">

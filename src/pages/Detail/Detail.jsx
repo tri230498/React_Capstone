@@ -34,10 +34,10 @@ export default function Detail() {
   const renderRealateProduct = () => {
     return productDetail.relatedProducts?.map((prod, index) => {
       return (
-        <div className="col-4" key={index}>
+        <div className="col-sm-4 col-12" key={index}>
           <div className="card">
             <div className="img">
-            <img src={prod.image} alt={prod.name}/>
+            <img src={prod.image} alt={prod.name} className="w-100"/>
             </div>
             <div className="card-body">
               <h3>{prod.name}</h3>
@@ -78,14 +78,14 @@ export default function Detail() {
     <div className="detail">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-4">
+          <div className="col-12 col-sm-4">
             <div className="img">
               <img src={productDetail.image} alt="" className="w-100" />
             </div>
           </div>
           <div className="col-8">
             <div className="product-info">
-              <h3 className="product-name">{productDetail.name}</h3>
+              <h3 className="product-name text-center">{productDetail.name}</h3>
               <span>{productDetail.description}</span>
               <div className="size">
                 <h5>Avaiable size</h5>
@@ -94,7 +94,7 @@ export default function Detail() {
               <div className="price">{productDetail.price}$</div>
               <div className="amount d-flex">
                 <button
-                  className="increase"
+                  className="increase text-center"
                   onClick={() => {
                     setQuantity(quantity + 1);
                   }}
