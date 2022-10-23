@@ -12,6 +12,8 @@ import { store } from './redux/configStore';
 //scss
 import "./assets/scss/style.scss"
 import Search from './pages/Search/Search';
+import Carts from './pages/Carts/Carts';
+import Register from './pages/Register/Register';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
@@ -19,7 +21,9 @@ root.render(
     <Routes>
       <Route path='' element={<App />}>
         <Route index element={<Index />}></Route>
+        <Route path='/Carts' element={<Carts/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
+        <Route path='/Register' element={<Register />}></Route>
           <Route path='detail' element={<Detail />}>
             <Route path=":id" element={<Detail />}></Route>
           </Route>  

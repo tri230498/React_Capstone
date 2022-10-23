@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
+  const { carts } = useSelector((state) => state.productReducer);
+  const  temp  = carts.productOrder.length;
 
+  const [volumn, setVolumn] = useState(temp);
+  console.log(volumn);
+
+  useEffect(() => {
+    setVolumn(temp);
+  }, [temp]);
   return (
     <div>
       <nav
@@ -36,18 +45,19 @@ export default function Header() {
                   }}
                 />
                 <span
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  navigate(`/search`);
-                }}
-                className="text-light pt-2"
-              >
-                Search
-              </span>
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    navigate(`/search`);
+                  }}
+                  className="text-light pt-2"
+                >
+                  Search
+                </span>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link " to="#">
-                  Giỏ hàng
+                <NavLink className="nav-link " to="/Carts">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span className="text-white">({volumn})</span>
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -57,7 +67,7 @@ export default function Header() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="#">
+                <NavLink className="nav-link" to="/Register">
                   Register
                 </NavLink>
               </li>

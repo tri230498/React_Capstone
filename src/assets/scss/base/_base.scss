@@ -24,9 +24,9 @@ button {
 
 a {
   text-decoration: none;
-  color: black;
+  color: rgb(62, 62, 62);
   &:hover {
-    color: $c1-text-c;
+    color: black;
   }
 }
 ul {

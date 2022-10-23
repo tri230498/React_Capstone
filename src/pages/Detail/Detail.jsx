@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductDetail } from "../../redux/reducer/productReducer";
+import { getProductDetail, getProductToCartAction } from "../../redux/reducer/productReducer";
 
 export default function Detail() {
   //==================== Biến =====================//
@@ -65,8 +65,8 @@ export default function Detail() {
   };
 
   const AddToCart = () => {
-    // const action = getProductToCartAction(newProductDetail);
-    // dispatch(action)
+    const action = getProductToCartAction(newProductDetail);
+    dispatch(action)
   };
 
   useEffect(() => {
@@ -118,7 +118,7 @@ export default function Detail() {
                 <button
                   className="btn rounded-0"
                   onClick={() => {
-                    // AddToCart();
+                    AddToCart();
                   }}
                 >
                   Add to cart
