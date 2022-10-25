@@ -1,7 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { signUp } from "../../redux/reducer/userReducer";
 export default function Register() {
+  const dispatch = useDispatch()
     const phoneRegex = RegExp(
         /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
       );
@@ -34,6 +37,8 @@ export default function Register() {
       }),
     onSubmit: (values) => {
         console.log(values);
+        dispatch(signUp(values))
+        
     }
   });
   return (

@@ -14,6 +14,7 @@ import "./assets/scss/style.scss"
 import Search from './pages/Search/Search';
 import Carts from './pages/Carts/Carts';
 import Register from './pages/Register/Register';
+import Login from './pages/Login/Login';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
@@ -24,6 +25,7 @@ root.render(
         <Route path='/Carts' element={<Carts/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
         <Route path='/Register' element={<Register />}></Route>
+        <Route path='/Login' element={<Login />}></Route>
           <Route path='detail' element={<Detail />}>
             <Route path=":id" element={<Detail />}></Route>
           </Route>  

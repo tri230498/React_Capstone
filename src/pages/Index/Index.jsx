@@ -47,7 +47,7 @@ export default function Index() {
   const renderProductFuture = () => {
     return arrProduct?.map((prod, index) => {
       return (
-        <div className="col-4" key={index}>
+        <div className="col-sm-4 col-12 col-md-3" key={index}>
           <div className="card">
             <img src={prod.image} alt="" className="w-100" />
             <i
@@ -68,7 +68,7 @@ export default function Index() {
               }}
             ></i>
             <div className="card-body">
-              <h3 style={{ height: 55 }}>{prod.name}</h3>
+              <h3 style={{ height: 90 }}>{prod.name}</h3>
               <p>
                 {prod.shortDescription.length > 20
                   ? prod.shortDescription.substr(0, 20) + "..."
